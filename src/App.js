@@ -2,8 +2,10 @@ import React from 'react';
 import './App.css';
 
 /** Components */
-import ClickCounter from './components/ClickCounter';
-import HoverCounter from './components/HoverCounter';
+import Counter from './components/Counter';
+import ClickCounterTwo from './components/ClickCounterTwo';
+import HoverCounterTwo from './components/HoverCounterTwo';
+import User from './components/User';
 
 /** Styles */
 import './appStyles.css';
@@ -12,10 +14,23 @@ import styles from './appStyles.module.css';
 function App() {
   return (
     <div className="App">
-      {/* SINCE HOC wrapped 'ClickCounter' the 'name' prop is passed down to 
-    'withCounter' HOC in this case */}
-      <ClickCounter name='Albert' />
-      <HoverCounter />
+      {/* render 'count'- state; 'incrementCount' - method */}
+      <Counter
+        render={(count, incrementCount) => (
+        <ClickCounterTwo 
+          count={count} incrementCount={incrementCount} />
+        )}
+      />
+      <Counter
+        render={(count, incrementCount) => (
+        <HoverCounterTwo 
+          count={count} incrementCount={incrementCount} />
+        )}
+      />
+      {/* RenderProps */}
+      {/* <ClickCounterTwo />
+      <HoverCounterTwo />
+      <User name={ (isLoggedIn) => isLoggedIn ? 'Albert' : 'Guest' } /> */}
     </div>
   );
 }
