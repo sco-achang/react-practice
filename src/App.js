@@ -2,20 +2,18 @@ import React, { Component } from 'react';
 import './App.css';
 
 /** Components */
-import ComponentC from './components/ComponentC';
-import { UserProvider } from './components/userContext';
+import FragmentDemo from './components/FragmentDemo';
+import Table from './components/Table';
+import ParentComp from './components/ParentComp';
 
 /** Styles */
 import './appStyles.css';
-import styles from './appStyles.module.css';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <UserProvider value='Albert'>
-          <ComponentC />
-        </UserProvider>
+        <ParentComp />
       </div>
     );
   }
