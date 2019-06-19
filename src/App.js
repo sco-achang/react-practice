@@ -1,23 +1,24 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './App.css';
 
 /** Components */
-import ClickCounter from './components/ClickCounter';
-import HoverCounter from './components/HoverCounter';
+import ComponentC from './components/ComponentC';
+import { UserProvider } from './components/userContext';
 
 /** Styles */
 import './appStyles.css';
 import styles from './appStyles.module.css';
 
-function App() {
-  return (
-    <div className="App">
-      {/* SINCE HOC wrapped 'ClickCounter' the 'name' prop is passed down to 
-    'withCounter' HOC in this case */}
-      <ClickCounter name='Albert' />
-      <HoverCounter />
-    </div>
-  );
+class App extends Component {
+  render() {
+    return (
+      <div className="App">
+        <UserProvider value='Albert'>
+          <ComponentC />
+        </UserProvider>
+      </div>
+    );
+  }
 }
 
 export default App;
