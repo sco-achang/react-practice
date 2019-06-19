@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 
 /** Components */
-import PortalDemo from './components/PortalDemo';
+import Hero from './components/Hero';
+import ErrorBoundary from './components/ErrorBoundary';
 
 /** Styles */
 import './appStyles.css';
@@ -11,8 +12,17 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-      {/* We want to put 'PortalDemo' in 'portal-root' node */}
-        <PortalDemo />
+        <ErrorBoundary>
+          <Hero heroName='Batman' />
+        </ErrorBoundary>
+
+        <ErrorBoundary>
+          <Hero heroName='Superman' />
+        </ErrorBoundary>
+        
+        <ErrorBoundary>
+          <Hero heroName='Joker' />
+        </ErrorBoundary>
       </div>
     );
   }
