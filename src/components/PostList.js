@@ -2,22 +2,19 @@ import React, { Component } from 'react'
 import axios from 'axios';
 
 class PostList extends Component {
-  constructor(props) {
-    super(props)
-  
-    this.state = {
-       posts: [],
-       errorMsg: ''
-    }
+  state = {
+    posts: [],
+    errorMsg: ''
   }
-  
+
   componentDidMount() {
-    axios.get('https://jsonplaceholder.typicode.com/posts1')
+    /** '/posts/:id' */
+    axios.get('https://jsonplaceholder.typicode.com/posts/1')
       .then(res => { 
         console.log(res)
         this.setState({posts: res.data})
       })
-      .catch (err => {
+      .catch(err => {
         console.log(err)
         this.setState({errorMsg: 'Error retrieving data'})
       })
@@ -29,12 +26,12 @@ class PostList extends Component {
     return (
       <div>
         List of Posts
+        {/* returns a 'null' if !posts.length - '&&'*/}
         {
-          posts.length ?
-          posts.map(post => <div key={post.id}>{post.title}</div>) :
-          null
+          posts.length &&
+          posts.map(post => <div key={post.id}>{post.title}</div>)
         }
-        { errorMsg ? <div>{errorMsg}</div> : null}
+        { errorMsg && <div>{errorMsg}</div> }
       </div>
     )
   }

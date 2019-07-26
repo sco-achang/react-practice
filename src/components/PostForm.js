@@ -2,14 +2,10 @@ import React, { Component } from 'react'
 import axios from 'axios';
 
 class PostForm extends Component {
-  constructor(props) {
-    super(props)
-  
-    this.state = {
-       userId: '',
-       title: '',
-       body: '',
-    }
+  state = {
+      userId: '',
+      title: '',
+      body: '',
   }
 
   // methods
