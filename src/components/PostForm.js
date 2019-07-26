@@ -10,15 +10,15 @@ class PostForm extends Component {
 
   // methods
   changeHandler = e => {
+    // get a list of all the 'input 'name' attributes with their new 'onChange' respective values
     this.setState({ [e.target.name]: e.target.value })
   }
 
   submitHandler = e => {
-    // avoid page refresh
-    e.preventDefault();
-    console.log(this.state);
+    e.preventDefault(); // avoid page refresh
+    console.log(`Form State Input Field Data BEFORE form submit: ${this.state}`);
     axios.post('https://jsonplaceholder.typicode/com/posts', this.state)
-      .then(res => console.log(res))
+      .then(res => console.log(`Form Submitted Data Update: ${res}`))
       .catch(err => console.log(err))
     
   }
@@ -28,7 +28,8 @@ class PostForm extends Component {
     return (
       <div>
         <form onSubmit={this.submitHandler}>
-          <div> 
+          <div>
+            {/* 'name' attribute allows for not having separate 'handelers' for each input */}
             <input 
               type="text"
               name="userId"
